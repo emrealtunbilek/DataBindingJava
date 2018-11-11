@@ -18,13 +18,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         mainBinding = DataBindingUtil.setContentView(this,R.layout.activity_main); //activity_urunler ActivityUrunlerBinding
 
-        Ogrenci ogr1=new Ogrenci(1,"emre");
-        Ogrenci ogr2=new Ogrenci(2,"hasan");
-
-       /* mainBinding.tvIsim.setText(ogr1.getIsim());
-        mainBinding.ogrNo.setText(""+ogr1.getNo());*/
-
-       mainBinding.setOgrenci(ogr2);
 
 
     }

@@ -24,7 +24,6 @@ public class UrunRecyclerViewAdapter extends RecyclerView.Adapter<UrunRecyclerVi
     private List<Urun> tumUrunler = new ArrayList<>();
     private Context mContext;
 
-
     public UrunRecyclerViewAdapter(Context context, List<Urun> urunler){
         tumUrunler = urunler;
         mContext = context;
@@ -34,12 +33,7 @@ public class UrunRecyclerViewAdapter extends RecyclerView.Adapter<UrunRecyclerVi
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        //DATA BINDING OLMASAYDI BOYLE YAPARDIK
-        //View view=LayoutInflater.from(mContext).inflate(R.layout.tek_sutun_urun_layout, parent, false);
-        //return new MyViewHolder(view);
-
         TekSutunUrunLayoutBinding binding=DataBindingUtil.inflate(LayoutInflater.from(mContext),R.layout.tek_sutun_urun_layout,parent,false);
-
         return new MyViewHolder(binding.getRoot());
 
     }
@@ -53,11 +47,8 @@ public class UrunRecyclerViewAdapter extends RecyclerView.Adapter<UrunRecyclerVi
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
-        //DATA BINDING OLMASAYDI BOYLE YAPARDIK
-        //holder.setData(tumUrunler.get(position), position);
+
         Urun oanListeyeYerlestirilenUrun = tumUrunler.get(position);
-
-
         holder.binding.setUrun(oanListeyeYerlestirilenUrun);
         holder.binding.executePendingBindings();
 
@@ -70,33 +61,39 @@ public class UrunRecyclerViewAdapter extends RecyclerView.Adapter<UrunRecyclerVi
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
-        //DATA BINDING OLMASAYDI BOYLE YAPARDIK
-       // ConstraintLayout tumLayout;
-        //TextView baslik, fiyat;
-
         TekSutunUrunLayoutBinding binding;
-
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-
             binding=DataBindingUtil.bind(itemView);
-
-            //DATA BINDING OLMASAYDI BOYLE YAPARDIK
-            //tumLayout= itemView.findViewById(R.id.tumLayout);
-            //baslik=itemView.findViewById(R.id.tvUrunBaslik);
-            //fiyat=itemView.findViewById(R.id.tvFiyat);
-
         }
+    }
+}
+//DATA BINDING OLMASAYDI BOYLE YAPARDIK
+//View view=LayoutInflater.from(mContext).inflate(R.layout.tek_sutun_urun_layout, parent, false);
+//return new MyViewHolder(view);
 
-        //DATA BINDING OLMASAYDI BOYLE YAPARDIK
-        //baslik.setText(urun.getBaslik());
-        //fiyat.setText(""+urun.getFiyat());
+
+//DATA BINDING OLMASAYDI BOYLE YAPARDIK
+//holder.setData(tumUrunler.get(position), position);
+
+
+//DATA BINDING OLMASAYDI BOYLE YAPARDIK
+// ConstraintLayout tumLayout;
+//TextView baslik, fiyat;
+
+
+//DATA BINDING OLMASAYDI BOYLE YAPARDIK
+//tumLayout= itemView.findViewById(R.id.tumLayout);
+//baslik=itemView.findViewById(R.id.tvUrunBaslik);
+//fiyat=itemView.findViewById(R.id.tvFiyat);
+
+
+//DATA BINDING OLMASAYDI BOYLE YAPARDIK
+//baslik.setText(urun.getBaslik());
+//fiyat.setText(""+urun.getFiyat());
         /*
         public void setData(Urun urun, int position) {
 
 
 
         }*/
-
-    }
-}

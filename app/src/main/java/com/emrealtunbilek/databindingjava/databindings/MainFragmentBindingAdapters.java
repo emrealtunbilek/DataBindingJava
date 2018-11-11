@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class MainFragmentBindingAdapters {
 
    @BindingAdapter("urunlerListesiniAta")
-   public static void setUrunlerListesi(RecyclerView recyclerView, List<Urun> urunler){
+   public static void sdfsfasdfasdfsadf(RecyclerView recyclerView, List<Urun> urunler){
 
        if(urunler == null){
            return;

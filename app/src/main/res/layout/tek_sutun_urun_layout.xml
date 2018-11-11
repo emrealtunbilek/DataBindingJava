@@ -10,6 +10,8 @@
             name="urun"
             type="com.emrealtunbilek.databindingjava.models.Urun"/>
 
+
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -65,7 +67,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:scaleType="fitCenter"
-            android:src="@{urun.urunResim}"
+            app:resimGoster="@{urun.urunResim}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvUrunBaslik" />

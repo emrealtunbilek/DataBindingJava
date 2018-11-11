@@ -35,7 +35,6 @@ public class MainFragment extends Fragment implements SwipeRefreshLayout.OnRefre
 
         setupUrunlerList();
 
-
         return mainBinding.getRoot();
     }
 

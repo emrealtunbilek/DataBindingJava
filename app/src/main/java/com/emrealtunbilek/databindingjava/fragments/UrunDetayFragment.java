@@ -8,18 +8,26 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.emrealtunbilek.databindingjava.R;
+import com.emrealtunbilek.databindingjava.databinding.FragmentUrunDetayBinding;
+import com.emrealtunbilek.databindingjava.utils.Urunler;
 
 
 public class UrunDetayFragment extends Fragment {
 
+    FragmentUrunDetayBinding mBinding;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_urun_detay, container, false);
+
+        mBinding=FragmentUrunDetayBinding.inflate(inflater);
+
+        Urunler urunler=new Urunler();
+        mBinding.setUrun(urunler.tumUrunlerDizi[3]);
+
+
+
+        return mBinding.getRoot();
     }
 
 }

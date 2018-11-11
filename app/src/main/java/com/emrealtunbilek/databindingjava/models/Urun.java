@@ -24,6 +24,10 @@ public class Urun implements Parcelable {
 
     }
 
+    public String miktariAlveStringeCevir(int miktar){
+        return "Miktar : "+miktar;
+    }
+
     public Urun(String baslik, String aciklama, int urunResim, double fiyat, double kampanyaliFiyat, int degerlendirmeSayisi, float degerlendirmeNotu, int seriNumarasi) {
         this.baslik = baslik;
         this.aciklama = aciklama;

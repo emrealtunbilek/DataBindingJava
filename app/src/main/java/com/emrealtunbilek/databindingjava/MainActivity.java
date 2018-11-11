@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 
 import com.emrealtunbilek.databindingjava.databinding.ActivityMainBinding;
+import com.emrealtunbilek.databindingjava.fragments.MainFragment;
 import com.emrealtunbilek.databindingjava.fragments.UrunDetayFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -26,10 +27,17 @@ public class MainActivity extends AppCompatActivity {
 
     private void init() {
 
+        MainFragment mainFragment=new MainFragment();
+        FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.anaContainer, mainFragment,"main_fra_eklendi");
+        transaction.commit();
+
+        /*
         UrunDetayFragment urunDetayFragment=new UrunDetayFragment();
         FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.anaContainer, urunDetayFragment,"urun_detay_fra_eklendi");
         transaction.commit();
+        */
 
 
     }

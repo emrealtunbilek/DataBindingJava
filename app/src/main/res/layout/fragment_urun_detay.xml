@@ -10,6 +10,10 @@
             name="urun"
             type="com.emrealtunbilek.databindingjava.models.Urun"/>
 
+        <variable
+            name="miktar"
+            type="int"/>
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -117,7 +121,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="Miktar : 1"
+            android:text="@{urun.miktariAlveStringeCevir(miktar)}"
             app:icon="@drawable/ic_miktar_sec"
             app:iconGravity="start"
             app:layout_constraintStart_toStartOf="parent"

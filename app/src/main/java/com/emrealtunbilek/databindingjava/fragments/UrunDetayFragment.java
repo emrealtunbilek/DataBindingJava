@@ -24,6 +24,7 @@ public class UrunDetayFragment extends Fragment {
 
         Urunler urunler=new Urunler();
         mBinding.setUrun(urunler.tumUrunlerDizi[3]);
+        mBinding.setMiktar(9);
 
 
 

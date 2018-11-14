@@ -12,6 +12,7 @@ import com.emrealtunbilek.databindingjava.R;
 import com.emrealtunbilek.databindingjava.databinding.TekSutunUrunLayoutBinding;
 import com.emrealtunbilek.databindingjava.interfaces.IMainActivity;
 import com.emrealtunbilek.databindingjava.models.Urun;
+import com.emrealtunbilek.databindingjava.models.UrunViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,9 +54,11 @@ public class UrunRecyclerViewAdapter extends RecyclerView.Adapter<UrunRecyclerVi
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
+        UrunViewModel urunViewModel=new UrunViewModel(mContext);
 
-        Urun oanListeyeYerlestirilenUrun = tumUrunler.get(position);
-        holder.binding.setUrun(oanListeyeYerlestirilenUrun);
+        urunViewModel.setUrun(tumUrunler.get(position));
+
+        holder.binding.setUrunViewModel(urunViewModel);
         holder.binding.setMainInterface(iMainActivity);
         holder.binding.executePendingBindings();
 

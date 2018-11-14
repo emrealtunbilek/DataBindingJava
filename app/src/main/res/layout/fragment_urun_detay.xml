@@ -7,12 +7,10 @@
     <data>
         <import type="android.view.View"/>
         <variable
-            name="urun"
-            type="com.emrealtunbilek.databindingjava.models.Urun"/>
+            name="urunViewModel"
+            type="com.emrealtunbilek.databindingjava.models.UrunViewModel"/>
 
-        <variable
-            name="miktar"
-            type="int"/>
+
 
     </data>
 
@@ -30,7 +28,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            android:rating="@{urun.degerlendirmeNotu}"
+            android:rating="@{urunViewModel.urun.degerlendirmeNotu}"
             app:layout_constraintBottom_toBottomOf="@+id/tvDegerlendirmeSayisi"
             app:layout_constraintEnd_toStartOf="@+id/tvDegerlendirmeSayisi"
             app:layout_constraintTop_toTopOf="parent" />
@@ -41,8 +39,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:text="@{String.valueOf(urun.degerlendirmeSayisi)}"
+            android:text="@{String.valueOf(urunViewModel.urun.degerlendirmeSayisi)}"
             android:textSize="18sp"
+            tools:text="( 232 )"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -54,10 +53,11 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:text="@{urun.baslik}"
+            android:text="@{urunViewModel.urun.baslik}"
             android:textColor="@color/colorAccent"
             android:textSize="18sp"
             android:textStyle="bold"
+            tools:text="Ürün Başlık"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ratingBarDegerlendirme" />
@@ -70,7 +70,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:scaleType="fitCenter"
-            app:resimGoster="@{urun.urunResim}"
+            app:resimGoster="@{urunViewModel.urun.urunResim}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvUrunBaslik" />
@@ -82,8 +82,9 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:text="@{urun.aciklama}"
+            android:text="@{urunViewModel.urun.aciklama}"
             android:textAlignment="center"
+            tools:text="Ürün Açıklama"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView" />
@@ -94,9 +95,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="@{urun.kampanyaliSatisVarmi() ? String.valueOf(urun.kampanyaliFiyat) : String.valueOf(urun.fiyat)}"
+            android:text="@{urunViewModel.urun.kampanyaliSatisVarmi() ? String.valueOf(urunViewModel.urun.kampanyaliFiyat) : String.valueOf(urunViewModel.urun.fiyat)}"
             android:textColor="@color/colorAccent"
             android:textSize="24sp"
+            tools:text="25.99"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvUrunAciklama" />
@@ -106,10 +108,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="@{String.valueOf(urun.fiyat)}"
+            android:text="@{String.valueOf(urunViewModel.urun.fiyat)}"
             android:textSize="18sp"
+            tools:text="32.22"
             android:textStyle="bold"
-            android:visibility="@{urun.kampanyaliSatisVarmi() ? View.VISIBLE : View.GONE}"
+            android:visibility="@{urunViewModel.urun.kampanyaliSatisVarmi() ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toBottomOf="@+id/tvFiyat"
             app:layout_constraintStart_toEndOf="@+id/tvFiyat"
             app:layout_constraintTop_toTopOf="@+id/tvFiyat" />
@@ -121,7 +124,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="@{urun.miktariAlveStringeCevir(miktar)}"
+            tools:text="Miktar Seç"
+            android:text="@{urunViewModel.urun.miktariAlveStringeCevir(urunViewModel.miktar)}"
             app:icon="@drawable/ic_miktar_sec"
             app:iconGravity="start"
             app:layout_constraintStart_toStartOf="parent"

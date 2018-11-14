@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.emrealtunbilek.databindingjava.databinding.FragmentUrunDetayBinding;
 import com.emrealtunbilek.databindingjava.models.Urun;
+import com.emrealtunbilek.databindingjava.models.UrunViewModel;
 import com.emrealtunbilek.databindingjava.utils.Urunler;
 
 
@@ -27,8 +28,14 @@ public class UrunDetayFragment extends Fragment {
         if(getArguments() != null){
 
             gelenSecilenUrun=getArguments().getParcelable("secilen_urun");
-            mBinding.setUrun(gelenSecilenUrun);
-            mBinding.setMiktar(1);
+
+            UrunViewModel urunViewModel=new UrunViewModel(getActivity());
+
+            urunViewModel.setUrun(gelenSecilenUrun);
+            urunViewModel.setMiktar(1);
+            urunViewModel.setResimYuklendiMi(false);
+
+            mBinding.setUrunViewModel(urunViewModel);
         }
 
         return mBinding.getRoot();

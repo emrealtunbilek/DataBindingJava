@@ -7,8 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.emrealtunbilek.databindingjava.MainActivity;
 import com.emrealtunbilek.databindingjava.R;
 import com.emrealtunbilek.databindingjava.databinding.TekSutunUrunLayoutBinding;
+import com.emrealtunbilek.databindingjava.interfaces.IMainActivity;
 import com.emrealtunbilek.databindingjava.models.Urun;
 
 import java.util.ArrayList;
@@ -23,10 +25,14 @@ public class UrunRecyclerViewAdapter extends RecyclerView.Adapter<UrunRecyclerVi
 
     private List<Urun> tumUrunler = new ArrayList<>();
     private Context mContext;
+    private IMainActivity iMainActivity;
 
     public UrunRecyclerViewAdapter(Context context, List<Urun> urunler){
         tumUrunler = urunler;
         mContext = context;
+
+        iMainActivity= (IMainActivity) mContext;
+
     }
 
     @NonNull
@@ -50,6 +56,7 @@ public class UrunRecyclerViewAdapter extends RecyclerView.Adapter<UrunRecyclerVi
 
         Urun oanListeyeYerlestirilenUrun = tumUrunler.get(position);
         holder.binding.setUrun(oanListeyeYerlestirilenUrun);
+        holder.binding.setMainInterface(iMainActivity);
         holder.binding.executePendingBindings();
 
     }

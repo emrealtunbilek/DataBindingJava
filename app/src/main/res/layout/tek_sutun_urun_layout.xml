@@ -10,6 +10,10 @@
             name="urun"
             type="com.emrealtunbilek.databindingjava.models.Urun"/>
 
+        <variable
+            name="mainInterface"
+            type="com.emrealtunbilek.databindingjava.interfaces.IMainActivity"/>
+
 
 
     </data>
@@ -17,6 +21,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/tumLayout"
         android:layout_width="match_parent"
+        android:onClick="@{() -> mainInterface.secilenUruneGit(urun)}"
         android:layout_height="wrap_content">
 
 

@@ -9,6 +9,7 @@ import android.util.Log;
 
 import com.emrealtunbilek.databindingjava.databinding.ActivityMainBinding;
 import com.emrealtunbilek.databindingjava.fragments.MainFragment;
+import com.emrealtunbilek.databindingjava.fragments.MiktarDialogFragment;
 import com.emrealtunbilek.databindingjava.fragments.UrunDetayFragment;
 import com.emrealtunbilek.databindingjava.interfaces.IMainActivity;
 import com.emrealtunbilek.databindingjava.models.Urun;
@@ -52,5 +53,16 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
         transaction.replace(R.id.anaContainer, urunDetayFragment,"urun_detay_fra_eklendi");
         transaction.addToBackStack("urun_detay_fra_eklendi");
         transaction.commit();
+    }
+
+    @Override
+    public void miktarDialogBaslat() {
+
+
+        MiktarDialogFragment miktarDialogFragment=new MiktarDialogFragment();
+        miktarDialogFragment.show(getSupportFragmentManager(),"miktar_dialog");
+
+
+
     }
 }

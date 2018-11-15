@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.emrealtunbilek.databindingjava.databinding.FragmentUrunDetayBinding;
+import com.emrealtunbilek.databindingjava.interfaces.IMainActivity;
 import com.emrealtunbilek.databindingjava.models.Urun;
 import com.emrealtunbilek.databindingjava.models.UrunViewModel;
 import com.emrealtunbilek.databindingjava.utils.Urunler;
@@ -31,11 +32,14 @@ public class UrunDetayFragment extends Fragment {
 
             UrunViewModel urunViewModel=new UrunViewModel(getActivity());
 
+
+
             urunViewModel.setUrun(gelenSecilenUrun);
             urunViewModel.setMiktar(1);
             urunViewModel.setResimYuklendiMi(false);
 
             mBinding.setUrunViewModel(urunViewModel);
+            mBinding.setIMainInterface((IMainActivity) getActivity());
         }
 
         return mBinding.getRoot();

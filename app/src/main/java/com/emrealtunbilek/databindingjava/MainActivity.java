@@ -65,4 +65,19 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
 
 
     }
+
+    @Override
+    public void setMiktar(int miktar) {
+        Log.e("EEE","SECILEN MIKTAR :"+miktar);
+
+        UrunDetayFragment fragment= (UrunDetayFragment) getSupportFragmentManager().findFragmentByTag("urun_detay_fra_eklendi");
+
+        if(fragment != null){
+
+            fragment.mBinding.getUrunViewModel().setMiktar(miktar);
+
+        }
+
+
+    }
 }

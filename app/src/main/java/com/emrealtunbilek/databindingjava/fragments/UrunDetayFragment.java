@@ -17,7 +17,7 @@ import com.emrealtunbilek.databindingjava.utils.Urunler;
 
 public class UrunDetayFragment extends Fragment {
 
-    FragmentUrunDetayBinding mBinding;
+    public FragmentUrunDetayBinding mBinding;
     Urun gelenSecilenUrun;
 
     @Override

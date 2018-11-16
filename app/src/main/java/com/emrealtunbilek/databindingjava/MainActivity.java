@@ -33,6 +33,8 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
 
         init();
 
+        sepetBilgileriniGuncelle();
+
     }
 
     private void init() {
@@ -87,6 +89,21 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
 
     }
 
+    public void sepetBilgileriniGuncelle(){
+
+
+        SharedPreferences preferences=PreferenceManager.getDefaultSharedPreferences(this);
+        Set<String> seriNumaralari = preferences.getStringSet("sepet_set", new HashSet<String>());
+
+        if (seriNumaralari != null) {
+            mainBinding.setSepettekiUrunSayisi(seriNumaralari.size());
+        }else {
+            mainBinding.setSepettekiUrunSayisi(0);
+        }
+
+
+    }
+
     @Override
     public void sepeteUrunEkle(Urun urun, int miktar) {
 
@@ -94,7 +111,9 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
         SharedPreferences.Editor editor=preferences.edit();
 
         Set<String> seriNumaralari = preferences.getStringSet("sepet_set", new HashSet<String>());
-        seriNumaralari.add(String.valueOf(urun.getSeriNumarasi()));
+        if (seriNumaralari != null) {
+            seriNumaralari.add(String.valueOf(urun.getSeriNumarasi()));
+        }
 
         editor.putStringSet("sepet_set",seriNumaralari);
 
@@ -104,10 +123,10 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
 
         editor.putInt(String.valueOf(urun.getSeriNumarasi()), (suankiMiktar+miktar));
 
-        editor.commit();
+        editor.apply();
 
-
-
+        setMiktar(1);
+        sepetBilgileriniGuncelle();
 
 
         Toast.makeText(this,"Gelen ürün adı:"+urun.getBaslik()+" miktarı :"+miktar,Toast.LENGTH_LONG).show();

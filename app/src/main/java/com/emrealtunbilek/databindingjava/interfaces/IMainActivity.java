@@ -9,5 +9,7 @@ public interface IMainActivity {
     void miktarDialogBaslat();
 
     void setMiktar(int miktar);
+
+    void sepeteUrunEkle(Urun urun, int miktar);
     
 }

@@ -4,8 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.emrealtunbilek.databindingjava.databinding.ActivityMainBinding;
 import com.emrealtunbilek.databindingjava.fragments.MainFragment;
@@ -13,6 +16,9 @@ import com.emrealtunbilek.databindingjava.fragments.MiktarDialogFragment;
 import com.emrealtunbilek.databindingjava.fragments.UrunDetayFragment;
 import com.emrealtunbilek.databindingjava.interfaces.IMainActivity;
 import com.emrealtunbilek.databindingjava.models.Urun;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity implements IMainActivity {
 
@@ -78,6 +84,33 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
 
         }
 
+
+    }
+
+    @Override
+    public void sepeteUrunEkle(Urun urun, int miktar) {
+
+        SharedPreferences preferences= PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor=preferences.edit();
+
+        Set<String> seriNumaralari = preferences.getStringSet("sepet_set", new HashSet<String>());
+        seriNumaralari.add(String.valueOf(urun.getSeriNumarasi()));
+
+        editor.putStringSet("sepet_set",seriNumaralari);
+
+
+
+        int suankiMiktar = preferences.getInt(String.valueOf(urun.getSeriNumarasi()), 0);
+
+        editor.putInt(String.valueOf(urun.getSeriNumarasi()), (suankiMiktar+miktar));
+
+        editor.commit();
+
+
+
+
+
+        Toast.makeText(this,"Gelen ürün adı:"+urun.getBaslik()+" miktarı :"+miktar,Toast.LENGTH_LONG).show();
 
     }
 }

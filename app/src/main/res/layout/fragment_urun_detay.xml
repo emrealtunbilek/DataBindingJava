@@ -151,7 +151,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
-                android:onClick="@{() -> urunViewModel.miktariDegis()}"
+                android:onClick="@{() -> iMainInterface.sepeteUrunEkle(urunViewModel.urun, urunViewModel.miktar)}"
                 android:text="SEPETE EKLE"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

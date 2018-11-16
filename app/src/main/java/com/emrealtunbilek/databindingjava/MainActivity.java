@@ -2,17 +2,20 @@ package com.emrealtunbilek.databindingjava;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.emrealtunbilek.databindingjava.databinding.ActivityMainBinding;
 import com.emrealtunbilek.databindingjava.fragments.MainFragment;
 import com.emrealtunbilek.databindingjava.fragments.MiktarDialogFragment;
+import com.emrealtunbilek.databindingjava.fragments.SepetFragment;
 import com.emrealtunbilek.databindingjava.fragments.UrunDetayFragment;
 import com.emrealtunbilek.databindingjava.interfaces.IMainActivity;
 import com.emrealtunbilek.databindingjava.models.Urun;
@@ -40,9 +43,28 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
     private void init() {
 
         MainFragment mainFragment=new MainFragment();
-        FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
+        final FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.anaContainer, mainFragment,"main_fra_eklendi");
         transaction.commit();
+
+
+        mainBinding.imageView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                SepetFragment fragment= (SepetFragment) getSupportFragmentManager().findFragmentByTag("sepet_fragment");
+                FragmentTransaction transaction1=getSupportFragmentManager().beginTransaction();
+
+                if(fragment == null){
+                    fragment=new SepetFragment();
+                    transaction1.replace(R.id.anaContainer, fragment,"sepet_fra_eklendi");
+                    transaction1.addToBackStack("sepet_fra_eklendi");
+                    transaction1.commit();
+                }
+
+
+            }
+        });
 
 
     }

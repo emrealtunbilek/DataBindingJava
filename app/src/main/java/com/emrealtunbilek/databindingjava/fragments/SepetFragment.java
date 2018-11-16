@@ -2,12 +2,13 @@ package com.emrealtunbilek.databindingjava.fragments;
 
 
 import android.os.Bundle;
-import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.emrealtunbilek.databindingjava.R;
+
+import androidx.fragment.app.Fragment;
 
 
 public class SepetFragment extends Fragment {

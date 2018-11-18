@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="tekSepetUrun"
+            type="com.emrealtunbilek.databindingjava.models.SepetTekUrunViewModel"/>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <ImageView
+            android:id="@+id/imgUrunResim"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/blue_hat" />
+
+        <TextView
+            android:id="@+id/tvUrunBaslik"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="Mavi Şapka"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/imgYukari"
+            app:layout_constraintStart_toEndOf="@+id/imgUrunResim"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvKampanyaliFiyat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="TextView"
+            android:textColor="@color/colorAccent"
+            android:visibility="visible"
+            app:layout_constraintStart_toEndOf="@+id/imgUrunResim"
+            app:layout_constraintTop_toBottomOf="@+id/tvUrunBaslik" />
+
+        <TextView
+            android:id="@+id/tvNormalFiyat"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toStartOf="@+id/imgYukari"
+            app:layout_constraintStart_toEndOf="@+id/tvKampanyaliFiyat"
+            app:layout_constraintTop_toTopOf="@+id/tvKampanyaliFiyat" />
+
+        <TextView
+            android:id="@+id/tvMiktar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="Miktar : 1"
+            app:layout_constraintEnd_toStartOf="@+id/imgAsagi"
+            app:layout_constraintStart_toStartOf="@+id/tvKampanyaliFiyat"
+            app:layout_constraintTop_toBottomOf="@+id/tvKampanyaliFiyat" />
+
+        <ImageView
+            android:id="@+id/imgYukari"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:tint="@color/colorAccent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_yukari_ok" />
+
+        <ImageView
+            android:id="@+id/imgAsagi"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:tint="@color/colorAccent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgYukari"
+            app:srcCompat="@drawable/ic_asagi_ok" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</layout>
+

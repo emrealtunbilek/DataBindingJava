@@ -19,4 +19,8 @@ public class SepetTekUrunViewModel extends BaseObservable {
         this.sepetUrun = sepetUrun;
         notifyPropertyChanged(BR.sepetUrun);
     }
+
+    public String miktariGetir(){
+        return "Miktar :" + sepetUrun.getMiktar();
+    }
 }

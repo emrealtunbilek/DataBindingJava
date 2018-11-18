@@ -1,5 +1,7 @@
 package com.emrealtunbilek.databindingjava.models;
 
+
+
 import com.emrealtunbilek.databindingjava.BR;
 
 import java.util.List;

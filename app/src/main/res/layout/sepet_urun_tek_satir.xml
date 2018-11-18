@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View"/>
         <variable
             name="tekSepetUrun"
             type="com.emrealtunbilek.databindingjava.models.SepetTekUrunViewModel"/>
@@ -25,7 +26,8 @@
             android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/blue_hat" />
+            app:resimGoster="@{tekSepetUrun.sepetUrun.urun.urunResim}"
+             />
 
         <TextView
             android:id="@+id/tvUrunBaslik"
@@ -34,7 +36,8 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:text="Mavi Şapka"
+            android:text="@{tekSepetUrun.sepetUrun.urun.baslik}"
+            tools:text="Başlık"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/imgYukari"
             app:layout_constraintStart_toEndOf="@+id/imgUrunResim"
@@ -46,9 +49,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="TextView"
+            tools:text="15.99 TL"
+            android:text="@{String.valueOf(tekSepetUrun.sepetUrun.urun.kampanyaliFiyat)}"
             android:textColor="@color/colorAccent"
-            android:visibility="visible"
+            android:visibility="@{tekSepetUrun.sepetUrun.urun.kampanyaliSatisVarmi() ? View.VISIBLE : View.GONE}"
             app:layout_constraintStart_toEndOf="@+id/imgUrunResim"
             app:layout_constraintTop_toBottomOf="@+id/tvUrunBaslik" />
 
@@ -58,7 +62,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:text="TextView"
+            tools:text="18.99 TL"
+            android:text="@{String.valueOf(tekSepetUrun.sepetUrun.urun.fiyat)}"
             app:layout_constraintEnd_toStartOf="@+id/imgYukari"
             app:layout_constraintStart_toEndOf="@+id/tvKampanyaliFiyat"
             app:layout_constraintTop_toTopOf="@+id/tvKampanyaliFiyat" />
@@ -67,12 +72,14 @@
             android:id="@+id/tvMiktar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:text="Miktar : 1"
+            android:text="@{tekSepetUrun.miktariGetir()}"
             app:layout_constraintEnd_toStartOf="@+id/imgAsagi"
-            app:layout_constraintStart_toStartOf="@+id/tvKampanyaliFiyat"
-            app:layout_constraintTop_toBottomOf="@+id/tvKampanyaliFiyat" />
+            app:layout_constraintStart_toEndOf="@+id/imgUrunResim"
+            app:layout_constraintTop_toBottomOf="@+id/tvNormalFiyat"
+            tools:text="Miktar : 5" />
 
         <ImageView
             android:id="@+id/imgYukari"

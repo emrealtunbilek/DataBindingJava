@@ -138,7 +138,12 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
         }
 
         sepetUrunViewModel.setSepettekiUrunler(sepetUrunleri);
-        sepetUrunViewModel.setSepetGorunurlugu(true);
+
+        try{
+            sepetUrunViewModel.setSepetGorunurlugu(mainBinding.getSepetUrunViewModel().isSepetGorunurlugu());
+        }catch (Exception e){
+            Log.e("EEE","HATA:"+e.getMessage());
+        }
 
 
         mainBinding.setSepetUrunViewModel(sepetUrunViewModel);
@@ -172,6 +177,14 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
 
 
         Toast.makeText(this,"Gelen ürün adı:"+urun.getBaslik()+" miktarı :"+miktar,Toast.LENGTH_LONG).show();
+
+    }
+
+    @Override
+    public void sepetGorunecekMi(boolean gorunurluk) {
+
+        mainBinding.getSepetUrunViewModel().setSepetGorunurlugu(gorunurluk);
+
 
     }
 }

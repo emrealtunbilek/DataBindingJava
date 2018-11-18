@@ -11,5 +11,6 @@ public interface IMainActivity {
     void setMiktar(int miktar);
 
     void sepeteUrunEkle(Urun urun, int miktar);
-    
+
+    void sepetGorunecekMi(boolean gorunurluk);
 }

@@ -8,6 +8,10 @@
             name="sepetUrunViewModel"
             type="com.emrealtunbilek.databindingjava.models.SepetUrunViewModel"/>
 
+        <variable
+            name="iMainInterface"
+            type="com.emrealtunbilek.databindingjava.interfaces.IMainActivity"/>
+
 
     </data>
 

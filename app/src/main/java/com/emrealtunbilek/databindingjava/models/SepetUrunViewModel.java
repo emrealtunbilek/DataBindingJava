@@ -23,16 +23,46 @@ public class SepetUrunViewModel extends BaseObservable {
     }
 
 
-
     public void setSepettekiUrunler(List<SepetUrun> sepettekiUrunler) {
         this.sepettekiUrunler = sepettekiUrunler;
         notifyPropertyChanged(BR.sepettekiUrunler);
     }
 
 
-
     public void setSepetGorunurlugu(boolean sepetGorunurlugu) {
         this.sepetGorunurlugu = sepetGorunurlugu;
         notifyPropertyChanged(BR.sepetGorunurlugu);
     }
+
+    public String tumUrunSayisiniBul(){
+
+        int toplamUrunSayisi=0;
+
+        for(SepetUrun urun : sepettekiUrunler){
+            toplamUrunSayisi = toplamUrunSayisi + urun.getMiktar();
+        }
+
+        return "Sepette "+ toplamUrunSayisi + " ürün var . Toplam :";
+
+    }
+
+    public String tumUrunlerinFiyati(){
+
+        double toplamTutar = 0;
+
+        for (SepetUrun urun : sepettekiUrunler){
+            if(urun.getUrun().getKampanyaliFiyat() == 0){
+                toplamTutar = toplamTutar + (urun.getUrun().getFiyat())*urun.getMiktar();
+            }else{
+                toplamTutar = toplamTutar + (urun.getUrun().getKampanyaliFiyat())*urun.getMiktar();
+            }
+        }
+
+
+        String yeniGosterim = String.format("%.2f",toplamTutar);
+
+        return yeniGosterim + "TL";
+
+    }
+
 }

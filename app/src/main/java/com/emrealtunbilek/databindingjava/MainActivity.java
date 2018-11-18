@@ -18,9 +18,14 @@ import com.emrealtunbilek.databindingjava.fragments.MiktarDialogFragment;
 import com.emrealtunbilek.databindingjava.fragments.SepetFragment;
 import com.emrealtunbilek.databindingjava.fragments.UrunDetayFragment;
 import com.emrealtunbilek.databindingjava.interfaces.IMainActivity;
+import com.emrealtunbilek.databindingjava.models.SepetUrun;
+import com.emrealtunbilek.databindingjava.models.SepetUrunViewModel;
 import com.emrealtunbilek.databindingjava.models.Urun;
+import com.emrealtunbilek.databindingjava.utils.Urunler;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class MainActivity extends AppCompatActivity implements IMainActivity {
@@ -117,11 +122,26 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
         SharedPreferences preferences=PreferenceManager.getDefaultSharedPreferences(this);
         Set<String> seriNumaralari = preferences.getStringSet("sepet_set", new HashSet<String>());
 
-        if (seriNumaralari != null) {
-            mainBinding.setSepettekiUrunSayisi(seriNumaralari.size());
-        }else {
-            mainBinding.setSepettekiUrunSayisi(0);
+        SepetUrunViewModel sepetUrunViewModel=new SepetUrunViewModel();
+        List<SepetUrun> sepetUrunleri = new ArrayList<>();
+        Urunler urunler=new Urunler();
+
+        for(String seriNumarasi : seriNumaralari){
+
+            int miktar = preferences.getInt(seriNumarasi,0);
+            SepetUrun eklenecekSepeturun=new SepetUrun();
+
+            eklenecekSepeturun.setMiktar(miktar);
+            eklenecekSepeturun.setUrun(urunler.tumUrunlerMap.get(seriNumarasi));
+            sepetUrunleri.add(eklenecekSepeturun);
+
         }
+
+        sepetUrunViewModel.setSepettekiUrunler(sepetUrunleri);
+        sepetUrunViewModel.setSepetGorunurlugu(true);
+
+
+        mainBinding.setSepetUrunViewModel(sepetUrunViewModel);
 
 
     }

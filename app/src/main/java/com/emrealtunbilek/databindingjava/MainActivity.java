@@ -187,4 +187,53 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
 
 
     }
+
+    @Override
+    public void sepetiGuncelle(Urun urun, int miktar) {
+
+        SharedPreferences preferences= PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor=preferences.edit();
+
+        int suankiMiktar = preferences.getInt(String.valueOf(urun.getSeriNumarasi()), 0);
+
+        editor.putInt(String.valueOf(urun.getSeriNumarasi()), (suankiMiktar+miktar));
+        editor.apply();
+        sepetBilgileriniGuncelle();
+
+    }
+
+    @Override
+    public void urunuSepettenSil(SepetUrun sepetUrun) {
+
+        SharedPreferences preferences= PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor=preferences.edit();
+
+        editor.remove(String.valueOf(sepetUrun.getUrun().getSeriNumarasi()));
+        editor.apply();
+
+        Set<String> seriNumaralari = preferences.getStringSet("sepet_set", new HashSet<String>());
+
+        if(seriNumaralari.size() ==1){
+
+            editor.remove("sepet_set");
+            editor.apply();
+
+        }else {
+
+            seriNumaralari.remove(String.valueOf(sepetUrun.getUrun().getSeriNumarasi()));
+            editor.putStringSet("sepet_set", seriNumaralari);
+            editor.apply();
+        }
+
+        sepetBilgileriniGuncelle();
+
+        SepetFragment fragment= (SepetFragment) getSupportFragmentManager().findFragmentByTag("sepet_fragment");
+
+        if(fragment !=null){
+            fragment.sepetListesiniGuncelle();
+        }
+
+
+
+    }
 }

@@ -1,5 +1,6 @@
 package com.emrealtunbilek.databindingjava.interfaces;
 
+import com.emrealtunbilek.databindingjava.models.SepetUrun;
 import com.emrealtunbilek.databindingjava.models.Urun;
 
 public interface IMainActivity {
@@ -13,4 +14,8 @@ public interface IMainActivity {
     void sepeteUrunEkle(Urun urun, int miktar);
 
     void sepetGorunecekMi(boolean gorunurluk);
+
+    void sepetiGuncelle(Urun urun, int miktar);
+
+    void urunuSepettenSil(SepetUrun sepetUrun);
 }

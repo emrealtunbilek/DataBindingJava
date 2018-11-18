@@ -52,6 +52,12 @@ public class SepetUrunAdapter extends RecyclerView.Adapter<SepetUrunAdapter.MyVi
 
     }
 
+    public void sepetUrunleriniGuncelle(List<SepetUrun> yeniListe){
+        mSepetUrunlerim.clear();
+        mSepetUrunlerim.addAll(yeniListe);
+        notifyDataSetChanged();
+    }
+
     @Override
     public int getItemCount() {
         return mSepetUrunlerim.size();

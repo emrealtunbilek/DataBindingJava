@@ -80,4 +80,9 @@ public class SepetFragment extends Fragment {
         fragmentSepetBinding.getIMainInterface().sepetGorunecekMi(false);
         super.onDestroy();
     }
+
+    public void sepetListesiniGuncelle() {
+
+        sepetiGetir();
+    }
 }

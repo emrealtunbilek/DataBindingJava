@@ -34,6 +34,10 @@ public class SepetFragmentBindingAdapters {
             Log.e("EEE","ADAPTER ATANDI GELEN URUN SIZE:"+urunler.size());
             adapter=new SepetUrunAdapter(recyclerView.getContext(), urunler);
             recyclerView.setAdapter(adapter);
+        }else{
+
+            adapter.sepetUrunleriniGuncelle(urunler);
+
         }
     }
 

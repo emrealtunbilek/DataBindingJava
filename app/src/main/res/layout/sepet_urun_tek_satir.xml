@@ -75,7 +75,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:text="@{tekSepetUrun.miktariGetir()}"
+            android:text="@{tekSepetUrun.miktariGetir(tekSepetUrun.sepetUrun)}"
             app:layout_constraintEnd_toStartOf="@+id/imgAsagi"
             app:layout_constraintStart_toEndOf="@+id/imgUrunResim"
             app:layout_constraintTop_toBottomOf="@+id/tvNormalFiyat"
@@ -88,6 +88,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:tint="@color/colorAccent"
+            android:onClick="@{() -> tekSepetUrun.miktarArtir(context)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_yukari_ok" />
@@ -99,6 +100,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:tint="@color/colorAccent"
+            android:onClick="@{() -> tekSepetUrun.miktarAzalt(context)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imgYukari"
             app:srcCompat="@drawable/ic_asagi_ok" />

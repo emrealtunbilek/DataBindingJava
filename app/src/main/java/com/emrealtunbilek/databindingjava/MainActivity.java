@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
 
 
     ActivityMainBinding mainBinding;
+    boolean cikmakIcinTikla = false;
 
 
     @Override
@@ -57,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
             @Override
             public void onClick(View v) {
 
-                SepetFragment fragment= (SepetFragment) getSupportFragmentManager().findFragmentByTag("sepet_fragment");
+                SepetFragment fragment= (SepetFragment) getSupportFragmentManager().findFragmentByTag("sepet_fra_eklendi");
                 FragmentTransaction transaction1=getSupportFragmentManager().beginTransaction();
 
                 if(fragment == null){
@@ -70,6 +72,69 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
 
             }
         });
+
+
+        mainBinding.btnTamamla.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                mainBinding.progressBar.setVisibility(View.VISIBLE);
+                new CountDownTimer(2000,2000){
+
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        mainBinding.progressBar.setVisibility(View.GONE);
+                        sepettekiUrunleriSil();
+                    }
+                }.start();
+
+
+
+
+            }
+        });
+
+
+    }
+
+    private void sepettekiUrunleriSil() {
+        SharedPreferences preferences= PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor=preferences.edit();
+
+        Set<String> seriNumaralari=preferences.getStringSet("sepet_set",new HashSet<String>());
+        for(String seriNumarasi : seriNumaralari){
+            editor.remove(seriNumarasi);
+            editor.apply();
+        }
+
+        editor.remove("sepet_set");
+        editor.apply();
+
+        Toast.makeText(this,"Alışveriş için teşekkürler",Toast.LENGTH_LONG).show();
+        anaSayfayaGeriGit();
+        sepetBilgileriniGuncelle();
+
+
+
+    }
+
+    private void anaSayfayaGeriGit() {
+
+
+        getSupportFragmentManager().popBackStack();
+        SepetFragment sepetFragment= (SepetFragment) getSupportFragmentManager().findFragmentByTag("sepet_fra_eklendi");
+        FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
+
+        if(sepetFragment != null){
+
+            transaction.remove(sepetFragment);
+            transaction.commit();
+        }
 
 
     }
@@ -227,10 +292,32 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
 
         sepetBilgileriniGuncelle();
 
-        SepetFragment fragment= (SepetFragment) getSupportFragmentManager().findFragmentByTag("sepet_fragment");
+        SepetFragment fragment= (SepetFragment) getSupportFragmentManager().findFragmentByTag("sepet_fra_eklendi");
 
         if(fragment !=null){
             fragment.sepetListesiniGuncelle();
+        }
+
+
+
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        int backStackFraSayisi = getSupportFragmentManager().getBackStackEntryCount();
+
+        if(backStackFraSayisi == 0 && cikmakIcinTikla){
+            super.onBackPressed();
+        }
+
+        if(backStackFraSayisi == 0 && !cikmakIcinTikla){
+            Toast.makeText(this,"Çıkmak için tekrar tıklayın",Toast.LENGTH_SHORT).show();
+            cikmakIcinTikla = true;
+        }else {
+
+            cikmakIcinTikla = false;
+            super.onBackPressed();
         }
 
 
